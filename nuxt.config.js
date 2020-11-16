@@ -1,7 +1,7 @@
 let development = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
   /*
   ** Headers of the page
   */
