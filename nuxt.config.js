@@ -37,7 +37,7 @@ module.exports = {
     minify: false
   },
   server: {
-    port: 3030, // default: 3000
+    port: process.env.PORT||3030, // default: 3000
   },
   /*
   ** Customize the progress-bar color
