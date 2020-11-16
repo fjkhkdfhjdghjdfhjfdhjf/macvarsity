@@ -32,5 +32,5 @@
             "expiresIn": "5000d"
         }
     },
-    "mongodb": "mongodb+srv://admin:admin123@cluster0.1icmf.mongodb.net/Valorantify?retryWrites=true&w=majority"
+    "mongodb": "mongodb://admin:admin123@ds019033.mlab.com:19033/valorantifydev"
 }
