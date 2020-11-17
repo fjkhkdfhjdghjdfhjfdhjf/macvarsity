@@ -173,44 +173,44 @@ export default {
     this.$nextTick(function() {
       this.loading = false;
     });
-    if (process.browser) {
-      this.$aes.setKey("SECURE_VAL_PW");
-      var authEnc = localStorage.getItem("auth");
-      if (authEnc) {
-        let auth = undefined;
-        try {
-          auth = JSON.parse(this.$aes.decrypt(authEnc));
-        } catch {
-          let encrypted = this.$aes.encrypt(authEnc);
-          localStorage.setItem("auth", encrypted);
-          window.location.reload();
-        }
-        if (auth) {
-          this.user.username =
-            auth.user.username.charAt(0).toUpperCase() +
-            // auth.user.username.slice(1);
-          this.user.id = auth.user._id;
-          this.$axios(process.env.baseUrl + `users/${this.user.id}`, {
-            method: "get",
-            headers: new Headers({ "content-type": "application/json" })
-          })
-            .then(function(response) {
-              return response.data;
-            })
-            .then(res => {
-              auth.permissions = res.permissions;
-              this.$aes.setKey("SECURE_VAL_PW");
-              let encrypted = this.$aes.encrypt(JSON.stringify(auth));
-              localStorage.setItem("auth", encrypted);
-              this.$axios.setHeader(
-                "Authorization",
-                `Bearer ${auth.accessToken}`
-              );
-              this.notifications = res.notifications;
-            });
-        }
-      }
-    }
+    // if (process.browser) {
+    //   this.$aes.setKey("SECURE_VAL_PW");
+    //   var authEnc = localStorage.getItem("auth");
+    //   if (authEnc) {
+    //     let auth = undefined;
+    //     try {
+    //       auth = JSON.parse(this.$aes.decrypt(authEnc));
+    //     } catch {
+    //       let encrypted = this.$aes.encrypt(authEnc);
+    //       localStorage.setItem("auth", encrypted);
+    //       window.location.reload();
+    //     }
+    //     if (auth) {
+    //       this.user.username =
+    //         auth.user.username.charAt(0).toUpperCase() +
+    //         // auth.user.username.slice(1);
+    //       this.user.id = auth.user._id;
+    //       this.$axios(process.env.baseUrl + `users/${this.user.id}`, {
+    //         method: "get",
+    //         headers: new Headers({ "content-type": "application/json" })
+    //       })
+    //         .then(function(response) {
+    //           return response.data;
+    //         })
+    //         .then(res => {
+    //           auth.permissions = res.permissions;
+    //           this.$aes.setKey("SECURE_VAL_PW");
+    //           let encrypted = this.$aes.encrypt(JSON.stringify(auth));
+    //           localStorage.setItem("auth", encrypted);
+    //           this.$axios.setHeader(
+    //             "Authorization",
+    //             `Bearer ${auth.accessToken}`
+    //           );
+    //           this.notifications = res.notifications;
+    //         });
+    //     }
+    //   }
+    // }
   },
   data() {
     return {
