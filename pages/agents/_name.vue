@@ -3,9 +3,9 @@
     <div class="columns is-centered">
       <div class="column is-one-fifth is-centered stick">
         <div class="column is-half stick">
-          <h1
+          <!-- <h1
             style="font-size:50px;margin-bottom:20px"
-          >{{$route.params.name.charAt(0).toUpperCase() + $route.params.name.slice(1)}}</h1>
+          >{{$route.params.name.charAt(0).toUpperCase() + $route.params.name.slice(1)}}</h1> -->
           <section
             class="info-tiles char-card"
             style="margin-top:22px;width:220px;height:266px"
@@ -67,20 +67,12 @@ export default {
   props: {
     type: String
   },
-  head() {
-    return {
-      title: "Valorant " + this.$route.params.name.charAt(0).toUpperCase() + this.$route.params.name.slice(1),
-    };
-  },
   data() {
     return {
       info: json
     };
   },
   mounted() {
-     if (process.browser) {
-    document.title = "Valorant " + this.$route.params.name.charAt(0).toUpperCase() + this.$route.params.name.slice(1);
-     }
   },
   methods: {
     openDemo(demo) {

@@ -64,7 +64,7 @@
               </div>
               <!--Last Matches-->
               <div style="text-align:left;font-size:14px;margin-top:40px">Last 3 Matches</div>
-              <div style="margin-top:20px;">
+              <!-- <div style="margin-top:20px;">
                 <div
                   v-for="(match, index) in matchHistoryFinal.slice(0,3)"
                   :key="index"
@@ -97,7 +97,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!--Map Winrate-->
               <div>Quarter Stats Winrate</div>
               <div style="margin-top:20px">

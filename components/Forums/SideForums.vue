@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <b-menu v-if="isForumsReady && isMatchesReady && isNewsReady">
-      <b-menu-list style="text-align:left" v-for="activity in data.slice(0,5)" :key="activity._id">
+      <!-- <b-menu-list style="text-align:left" v-for="activity in data.slice(0,5)" :key="activity._id">
         <div>
           <nuxt-link
             style="padding:0px"
@@ -51,7 +51,7 @@
             </b-menu-item>
           </nuxt-link>
         </div>
-      </b-menu-list>
+      </b-menu-list> -->
     </b-menu>
     <b-menu>
       <b-menu-list>

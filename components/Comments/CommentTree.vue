@@ -120,7 +120,7 @@
                 @click="reply(props.row,depth)"
               >
                 <b-icon icon="message-reply-text"></b-icon>
-                <span v-if="props.row._id">{{props.row._id.slice(-2).toUpperCase()}}</span>
+                <!-- <span v-if="props.row._id">{{props.row._id.slice(-2).toUpperCase()}}</span> -->
                 <div>{{formatDate(props.row.createdAt)}}</div>
               </div>
             </div>

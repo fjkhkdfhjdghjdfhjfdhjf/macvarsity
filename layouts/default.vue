@@ -160,7 +160,7 @@ export default {
         if (auth) {
           this.user.username =
             auth.user.username.charAt(0).toUpperCase() +
-            auth.user.username.slice(1);
+            // auth.user.username.slice(1);
           this.user.id = auth.user._id;
           this.$axios(process.env.baseUrl + `users/${this.user.id}`, {
             method: "get",
