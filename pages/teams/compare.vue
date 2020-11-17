@@ -145,105 +145,105 @@ import HeadToHeadCard from '@/components/HeadToHeadCard'
 
 export default {
     watchQuery: true,
-    asyncData( route ) {
-        return axios.all([
-            axios.post(process.env.baseUrl + `api/db/teamstats`,  { filters: `team_oids=>'{${route.query.team1},${route.query.team2}}'` }),
-            axios.post(process.env.baseUrl + `api/db/mapstats`,  { filters: `team_oids=>'{${route.query.team1}}'` }),
-            axios.post(process.env.baseUrl + `api/db/mapstats`,  { filters: `team_oids=>'{${route.query.team2}}'` }),
-            axios.get(process.env.baseUrl + `api/gamemaps`),
-            axios.get(
-              // only matches of team1 vs team2 (or team2 vs team1) - head to head - with dateTime < match.dateTime
-              process.env.baseUrl +
-                `api/matches?active=false&$or[0][$and][0][teamOneId]=${route.query.team1}&$or[0][$and][1][teamTwoId]=${route.query.team2}&$or[0][$and][2][dateTime][$lt]=${new Date().toString()}&$or[1][$and][0][teamOneId]=${route.query.team2}&$or[1][$and][1][teamTwoId]=${route.query.team1}&$or[1][$and][2][dateTime][$lt]=${new Date().toString()}&populatemapsonly=true`
-            ),
-            axios.post(process.env.baseUrl + `api/db/compostats`,  { filters: `team_oids=>'{${route.query.team1}}'` }),
-            axios.post(process.env.baseUrl + `api/db/compostats`,  { filters: `team_oids=>'{${route.query.team2}}'` }),
-        ]).then(axios.spread(async (teamStatsRaw, mapStats1Raw, mapStats2Raw, gamemapsRaw, headToHeadRaw, compStats1Raw, compStats2Raw) => {
-            let gamemaps = gamemapsRaw.data.data
-            let mapStats = []
-            let mapStats1 = mapStats1Raw.data
-            let mapStats2 = mapStats2Raw.data
-            let favoriteComp1 = undefined;
-            let favoriteComp2 = undefined;
+    // asyncData( route ) {
+    //     return axios.all([
+    //         axios.post(process.env.baseUrl + `api/db/teamstats`,  { filters: `team_oids=>'{${route.query.team1},${route.query.team2}}'` }),
+    //         axios.post(process.env.baseUrl + `api/db/mapstats`,  { filters: `team_oids=>'{${route.query.team1}}'` }),
+    //         axios.post(process.env.baseUrl + `api/db/mapstats`,  { filters: `team_oids=>'{${route.query.team2}}'` }),
+    //         axios.get(process.env.baseUrl + `api/gamemaps`),
+    //         axios.get(
+    //           // only matches of team1 vs team2 (or team2 vs team1) - head to head - with dateTime < match.dateTime
+    //           process.env.baseUrl +
+    //             `api/matches?active=false&$or[0][$and][0][teamOneId]=${route.query.team1}&$or[0][$and][1][teamTwoId]=${route.query.team2}&$or[0][$and][2][dateTime][$lt]=${new Date().toString()}&$or[1][$and][0][teamOneId]=${route.query.team2}&$or[1][$and][1][teamTwoId]=${route.query.team1}&$or[1][$and][2][dateTime][$lt]=${new Date().toString()}&populatemapsonly=true`
+    //         ),
+    //         axios.post(process.env.baseUrl + `api/db/compostats`,  { filters: `team_oids=>'{${route.query.team1}}'` }),
+    //         axios.post(process.env.baseUrl + `api/db/compostats`,  { filters: `team_oids=>'{${route.query.team2}}'` }),
+    //     ]).then(axios.spread(async (teamStatsRaw, mapStats1Raw, mapStats2Raw, gamemapsRaw, headToHeadRaw, compStats1Raw, compStats2Raw) => {
+    //         let gamemaps = gamemapsRaw.data.data
+    //         let mapStats = []
+    //         let mapStats1 = mapStats1Raw.data
+    //         let mapStats2 = mapStats2Raw.data
+    //         let favoriteComp1 = undefined;
+    //         let favoriteComp2 = undefined;
 
-            compStats1Raw.data.forEach(comp => {
-                if(favoriteComp1 === undefined) {
-                    favoriteComp1 = comp;
-                } else {
-                    if (comp.Pickrate > favoriteComp1.Pickrate) {
-                        favoriteComp1 = comp;
-                    }
-                }
-            });
+    //         compStats1Raw.data.forEach(comp => {
+    //             if(favoriteComp1 === undefined) {
+    //                 favoriteComp1 = comp;
+    //             } else {
+    //                 if (comp.Pickrate > favoriteComp1.Pickrate) {
+    //                     favoriteComp1 = comp;
+    //                 }
+    //             }
+    //         });
 
-            compStats2Raw.data.forEach(comp => {
-                if(favoriteComp2 === undefined) {
-                    favoriteComp2 = comp;
-                } else {
-                    if (comp.Pickrate > favoriteComp2.Pickrate) {
-                        favoriteComp2 = comp;
-                    }
-                }
-            });
-            let mapIds = gamemaps.map(map => {
-                return map._id
-            })
+    //         compStats2Raw.data.forEach(comp => {
+    //             if(favoriteComp2 === undefined) {
+    //                 favoriteComp2 = comp;
+    //             } else {
+    //                 if (comp.Pickrate > favoriteComp2.Pickrate) {
+    //                     favoriteComp2 = comp;
+    //                 }
+    //             }
+    //         });
+    //         let mapIds = gamemaps.map(map => {
+    //             return map._id
+    //         })
 
-            let mapRequests = [];
+    //         let mapRequests = [];
 
-            for (let i = 0; i < mapIds.length; i++) {
-                let newRequest1 = axios({method: 'post', url: process.env.baseUrl + `api/db/playerstats`, data: { filters: `team_oids=>'{${route.query.team1}}',gamemap_oids=>'{${mapIds[i]}}'` } })
-                mapRequests.push(newRequest1);
-                let newRequest2 = axios({method: 'post', url: process.env.baseUrl + `api/db/playerstats`, data: { filters: `team_oids=>'{${route.query.team2}}',gamemap_oids=>'{${mapIds[i]}}'` } })
-                mapRequests.push(newRequest2);
-            }
+    //         for (let i = 0; i < mapIds.length; i++) {
+    //             let newRequest1 = axios({method: 'post', url: process.env.baseUrl + `api/db/playerstats`, data: { filters: `team_oids=>'{${route.query.team1}}',gamemap_oids=>'{${mapIds[i]}}'` } })
+    //             mapRequests.push(newRequest1);
+    //             let newRequest2 = axios({method: 'post', url: process.env.baseUrl + `api/db/playerstats`, data: { filters: `team_oids=>'{${route.query.team2}}',gamemap_oids=>'{${mapIds[i]}}'` } })
+    //             mapRequests.push(newRequest2);
+    //         }
 
-            let data = await axios.all([...mapRequests]).then(axios.spread((...mapResponses) => {
-                let mapsData = []
-                for(let i = 0; i < mapResponses.length - 1; i += 2) {
-                    mapsData.push({team1: mapResponses[i].data, team2: mapResponses[i + 1].data})
-                }
+    //         let data = await axios.all([...mapRequests]).then(axios.spread((...mapResponses) => {
+    //             let mapsData = []
+    //             for(let i = 0; i < mapResponses.length - 1; i += 2) {
+    //                 mapsData.push({team1: mapResponses[i].data, team2: mapResponses[i + 1].data})
+    //             }
 
-                return mapsData;
-            }))
-            gamemaps.forEach((map, index) => {
-                let team1BestPlayer = undefined;
-                let team2BestPlayer = undefined;
-                mapStats.push({
-                    name: map.name,
-                    image: map.img,
-                    team1: mapStats1.findIndex(element => element.Map == map.name) != -1 ? mapStats1[mapStats1.findIndex(element => element.Map == map.name)] : undefined,
-                    team2: mapStats2.findIndex(element => element.Map == map.name) != -1 ? mapStats2[mapStats2.findIndex(element => element.Map == map.name)] : undefined
-                })
-                if(mapStats[index].team1 !== undefined) {
-                    data[index].team1.forEach(player => {
-                        if(team1BestPlayer === undefined) {
-                            team1BestPlayer = player;
-                        } else {
-                            if (player.ValRating > team1BestPlayer.ValRating) {
-                                team1BestPlayer = player;
-                            }
-                        }
-                    })
-                    mapStats[index].team1.bestPlayer = team1BestPlayer;
-                }
-                if(mapStats[index].team2 !== undefined) {
-                    data[index].team2.forEach(player => {
-                        if(team2BestPlayer === undefined) {
-                            team2BestPlayer = player;
-                        } else {
-                            if (player.ValRating > team2BestPlayer.ValRating) {
-                                team2BestPlayer = player;
-                            }
-                        }
-                    })
-                    mapStats[index].team2.bestPlayer = team2BestPlayer;
-                }
-            })
+    //             return mapsData;
+    //         }))
+    //         gamemaps.forEach((map, index) => {
+    //             let team1BestPlayer = undefined;
+    //             let team2BestPlayer = undefined;
+    //             mapStats.push({
+    //                 name: map.name,
+    //                 image: map.img,
+    //                 team1: mapStats1.findIndex(element => element.Map == map.name) != -1 ? mapStats1[mapStats1.findIndex(element => element.Map == map.name)] : undefined,
+    //                 team2: mapStats2.findIndex(element => element.Map == map.name) != -1 ? mapStats2[mapStats2.findIndex(element => element.Map == map.name)] : undefined
+    //             })
+    //             if(mapStats[index].team1 !== undefined) {
+    //                 data[index].team1.forEach(player => {
+    //                     if(team1BestPlayer === undefined) {
+    //                         team1BestPlayer = player;
+    //                     } else {
+    //                         if (player.ValRating > team1BestPlayer.ValRating) {
+    //                             team1BestPlayer = player;
+    //                         }
+    //                     }
+    //                 })
+    //                 mapStats[index].team1.bestPlayer = team1BestPlayer;
+    //             }
+    //             if(mapStats[index].team2 !== undefined) {
+    //                 data[index].team2.forEach(player => {
+    //                     if(team2BestPlayer === undefined) {
+    //                         team2BestPlayer = player;
+    //                     } else {
+    //                         if (player.ValRating > team2BestPlayer.ValRating) {
+    //                             team2BestPlayer = player;
+    //                         }
+    //                     }
+    //                 })
+    //                 mapStats[index].team2.bestPlayer = team2BestPlayer;
+    //             }
+    //         })
             
-            return { teamStats: teamStatsRaw.data.reverse(), mapStats, headToHeadData: headToHeadRaw.data.data, compStats1: compStats1Raw.data, compStats2: compStats2Raw.data, favoriteComp1, favoriteComp2 }
-        }))
-    },
+    //         return { teamStats: teamStatsRaw.data.reverse(), mapStats, headToHeadData: headToHeadRaw.data.data, compStats1: compStats1Raw.data, compStats2: compStats2Raw.data, favoriteComp1, favoriteComp2 }
+    //     }))
+    //},
     created() {
     },
     methods: {

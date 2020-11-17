@@ -303,51 +303,51 @@ export default {
     };
   },
   created() {
-    return axios.all([
-        axios.get(process.env.baseUrl + "api/events/" + this.eventId),
-        axios.post(process.env.baseUrl + `api/db/playerstats`, { filters: `event_oids=>'{${this.eventId}}'` }),
-        axios.get(process.env.baseUrl + `api/gamemaps`)
-      ])
-      .then(
-        axios.spread(async (event, eventPlayerStats, gamemapsRaw) => {
-          let playerStats = eventPlayerStats.data;
-          this.mapHistory = gamemapsRaw.data.data;
-          let mapIds = this.mapHistory.map(map => {
-            return map._id
-          })
+    // return axios.all([
+    //     axios.get(process.env.baseUrl + "api/events/" + this.eventId),
+    //     axios.post(process.env.baseUrl + `api/db/playerstats`, { filters: `event_oids=>'{${this.eventId}}'` }),
+    //     axios.get(process.env.baseUrl + `api/gamemaps`)
+    //   ])
+    //   .then(
+    //     axios.spread(async (event, eventPlayerStats, gamemapsRaw) => {
+    //       let playerStats = eventPlayerStats.data;
+    //       this.mapHistory = gamemapsRaw.data.data;
+    //       let mapIds = this.mapHistory.map(map => {
+    //         return map._id
+    //       })
 
-          let mapTeamRequests = [];
-          for (let i = 0; i < mapIds.length; i++) {
-            let newRequest = axios({method: 'post', url: process.env.baseUrl + `api/db/teamStats`, data: { filters: `event_oids=>'{${this.eventId}}',gamemap_oids=>'{${mapIds[i]}}'` } })
-            mapTeamRequests.push(newRequest);
-          }
+    //       let mapTeamRequests = [];
+    //       for (let i = 0; i < mapIds.length; i++) {
+    //         let newRequest = axios({method: 'post', url: process.env.baseUrl + `api/db/teamStats`, data: { filters: `event_oids=>'{${this.eventId}}',gamemap_oids=>'{${mapIds[i]}}'` } })
+    //         mapTeamRequests.push(newRequest);
+    //       }
 
-          let mapStats = []
+    //       let mapStats = []
 
-          let data = await axios.all([
-            axios.post(process.env.baseUrl + `api/db/mapstats`, { filters: `event_oids=>'{${this.eventId}}'`}),
-             ...mapTeamRequests])
-             .then(axios.spread(async (res, ...mapTeamResponses) => {
-            for(let i = 0; i < res.data.length; i++) {
-              mapStats[i] = res.data[i];
-            }
-            let topTeamsPerMap = {}
-            for (let i = 0; i < mapIds.length; i++){
-              topTeamsPerMap[mapIds[i]] = mapTeamResponses[i].data.sort((a, b) => {
-                return b.ValRating - a.ValRating
-              }).splice(0,3)
+    //       let data = await axios.all([
+    //         axios.post(process.env.baseUrl + `api/db/mapstats`, { filters: `event_oids=>'{${this.eventId}}'`}),
+    //          ...mapTeamRequests])
+    //          .then(axios.spread(async (res, ...mapTeamResponses) => {
+    //         for(let i = 0; i < res.data.length; i++) {
+    //           mapStats[i] = res.data[i];
+    //         }
+    //         let topTeamsPerMap = {}
+    //         for (let i = 0; i < mapIds.length; i++){
+    //           topTeamsPerMap[mapIds[i]] = mapTeamResponses[i].data.sort((a, b) => {
+    //             return b.ValRating - a.ValRating
+    //           }).splice(0,3)
               
-            }
-            return { playerStats: playerStats, event: event.data, mapStats: mapStats, topTeamsPerMap }
-          }))
-          this.event = data.event
-          this.playerStats = [data.playerStats]
-          this.mapStats = data.mapStats
-          this.topTeamsPerMap = data.topTeamsPerMap
-          this.continue()
-          // return { event: data.event, playerStats: [data.playerStats], mapHistory, mapStats: data.mapStats, topTeamsPerMap: data.topTeamsPerMap };
-        })
-      )
+    //         }
+    //         return { playerStats: playerStats, event: event.data, mapStats: mapStats, topTeamsPerMap }
+    //       }))
+    //       this.event = data.event
+    //       this.playerStats = [data.playerStats]
+    //       this.mapStats = data.mapStats
+    //       this.topTeamsPerMap = data.topTeamsPerMap
+    //       this.continue()
+    //       // return { event: data.event, playerStats: [data.playerStats], mapHistory, mapStats: data.mapStats, topTeamsPerMap: data.topTeamsPerMap };
+    //     })
+    //   )
   },
   methods: {
     getTeamImg(img) {
@@ -369,29 +369,29 @@ export default {
         return process.env.baseUrl + `api/uploads/agents/unknown.png`;
       }
     },
-    continue() {
-    let agentRequests = [];
-    let mapIds = this.mapHistory.map(map => {
-      return map._id
-    })
-    agentRequests.push(axios({method: 'post', url: process.env.baseUrl + `api/db/agentstats`, data: { filters: `event_oids=>'{${this.event._id}}'` } }))
-    for (let i = 0; i < mapIds.length; i++) {
-      let newRequest = axios({method: 'post', url: process.env.baseUrl + `api/db/agentstats`, data: { filters: `event_oids=>'{${this.event._id}}',gamemap_oids=>'{${mapIds[i]}}'` } })
-      agentRequests.push(newRequest);
-    }
-    axios.all(agentRequests).then(axios.spread((...agentStatsResponses) => {
+  //   continue() {
+  //   let agentRequests = [];
+  //   let mapIds = this.mapHistory.map(map => {
+  //     return map._id
+  //   })
+  //   agentRequests.push(axios({method: 'post', url: process.env.baseUrl + `api/db/agentstats`, data: { filters: `event_oids=>'{${this.event._id}}'` } }))
+  //   for (let i = 0; i < mapIds.length; i++) {
+  //     let newRequest = axios({method: 'post', url: process.env.baseUrl + `api/db/agentstats`, data: { filters: `event_oids=>'{${this.event._id}}',gamemap_oids=>'{${mapIds[i]}}'` } })
+  //     agentRequests.push(newRequest);
+  //   }
+  //   axios.all(agentRequests).then(axios.spread((...agentStatsResponses) => {
 
-      this.allAgentStats = agentStatsResponses.map(res => res.data);
-    }))
-    let playerStatsPerMapRequests = []
-    for (let i = 0; i < mapIds.length; i++) {
-      let newRequest = axios({method: 'post', url: process.env.baseUrl + `api/db/playerstats`, data: { filters: `event_oids=>'{${this.event._id}}',gamemap_oids=>'{${mapIds[i]}}'` } })
-      playerStatsPerMapRequests.push(newRequest)
-    }
-    axios.all(playerStatsPerMapRequests).then(axios.spread((...playerStatsPerMapResponses) => {
-      playerStatsPerMapResponses.map(res =>  this.playerStats.push(res.data))
-    }))
-  }
+  //     this.allAgentStats = agentStatsResponses.map(res => res.data);
+  //   }))
+  //   let playerStatsPerMapRequests = []
+  //   for (let i = 0; i < mapIds.length; i++) {
+  //     let newRequest = axios({method: 'post', url: process.env.baseUrl + `api/db/playerstats`, data: { filters: `event_oids=>'{${this.event._id}}',gamemap_oids=>'{${mapIds[i]}}'` } })
+  //     playerStatsPerMapRequests.push(newRequest)
+  //   }
+  //   axios.all(playerStatsPerMapRequests).then(axios.spread((...playerStatsPerMapResponses) => {
+  //     playerStatsPerMapResponses.map(res =>  this.playerStats.push(res.data))
+  //   }))
+  // }
   },
   components: { }
 };

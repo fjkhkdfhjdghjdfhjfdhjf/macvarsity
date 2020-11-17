@@ -1448,171 +1448,171 @@ export default {
     };
   },
   mounted() {
-    if (window.location.hash === "") {
-      window.location.hash = "#players";
-    } else if (window.location.hash == "#teams") {
-      this.tabs = 1;
-    } else if (window.location.hash == "#agents") {
-      this.tabs = 2;
-    } else {
-      window.location.hash = "#players"
-    }
-    this.isLoading = true;
-    this.$axios(process.env.baseUrl + "api/db/playerstats", { method: "post" })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.playersData = response;
-        for (let i = 1; i <= this.playersData.length; i++) {
-          this.playersData[i - 1].rankNum = i;
-          this.playersData[i - 1]['Rounds Played'] = parseInt(this.playersData[i - 1]['Rounds Played'])
-          this.playersData[i - 1]['Maps Played'] = parseInt(this.playersData[i - 1]['Maps Played'])
-          this.playersData[i - 1]['Total Kills'] = parseInt(this.playersData[i - 1]['Total Kills'])
-          this.playersData[i - 1]['Total Deaths'] = parseInt(this.playersData[i - 1]['Total Deaths'])
-          this.playersData[i - 1]['Total FB'] = parseInt(this.playersData[i - 1]['Total FB'])
-          this.playersData[i - 1]['Total Assists'] = parseInt(this.playersData[i - 1]['Total Assists'])
-          this.playersData[i - 1]['K-D'] = parseInt(this.playersData[i - 1]['K-D'])
-          this.playersData[i - 1]['KA-D'] = parseInt(this.playersData[i - 1]['KA-D'])
-          this.playersData[i - 1]['Total Plants'] = parseInt(this.playersData[i - 1]['Total Plants'])
-          this.playersData[i - 1]['Total Defuses'] = parseInt(this.playersData[i - 1]['Total Defuses'])
-        }
-      });
-    this.$axios(process.env.baseUrl + "api/db/teamstats", {
-      method: "post"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.teamsData = response;
-        for (let i = 1; i <= this.teamsData.length; i++) {
-          this.teamsData[i - 1].rankNum = i;
-          this.teamsData[i - 1]['Rounds Played'] = parseInt(this.teamsData[i - 1]['Rounds Played'])
-          this.teamsData[i - 1]['Maps Played'] = parseInt(this.teamsData[i - 1]['Maps Played'])
-          this.teamsData[i - 1]['Total Kills'] = parseInt(this.teamsData[i - 1]['Total Kills'])
-          this.teamsData[i - 1]['Total Deaths'] = parseInt(this.teamsData[i - 1]['Total Deaths'])
-          this.teamsData[i - 1]['Total FB'] = parseInt(this.teamsData[i - 1]['Total FB'])
-          this.teamsData[i - 1]['Total Assists'] = parseInt(this.teamsData[i - 1]['Total Assists'])
-          this.teamsData[i - 1]['K-D'] = parseInt(this.teamsData[i - 1]['K-D'])
-          this.teamsData[i - 1]['KA-D'] = parseInt(this.teamsData[i - 1]['KA-D'])
-          this.teamsData[i - 1]['Total Plants'] = parseInt(this.teamsData[i - 1]['Total Plants'])
-          this.teamsData[i - 1]['Total Defuses'] = parseInt(this.teamsData[i - 1]['Total Defuses'])
-        }
-      });
-    this.$axios(process.env.baseUrl + "api/db/agentstats", {
-      method: "post"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.agentsData = response;
-        for (let i = 1; i <= this.agentsData.length; i++) {
-          this.agentsData[i - 1]['Rounds Played'] = parseInt(this.agentsData[i - 1]['Rounds Played'])
-          this.agentsData[i - 1]['Maps Played'] = parseInt(this.agentsData[i - 1]['Maps Played'])
-          this.agentsData[i - 1]['Total Kills'] = parseInt(this.agentsData[i - 1]['Total Kills'])
-          this.agentsData[i - 1]['Total Deaths'] = parseInt(this.agentsData[i - 1]['Total Deaths'])
-          this.agentsData[i - 1]['Total FB'] = parseInt(this.agentsData[i - 1]['Total FB'])
-          this.agentsData[i - 1]['Total Assists'] = parseInt(this.agentsData[i - 1]['Total Assists'])
-          this.agentsData[i - 1]['K-D'] = parseInt(this.agentsData[i - 1]['K-D'])
-          this.agentsData[i - 1]['KA-D'] = parseInt(this.agentsData[i - 1]['KA-D'])
-          this.agentsData[i - 1]['Total Plants'] = parseInt(this.agentsData[i - 1]['Total Plants'])
-          this.agentsData[i - 1]['Total Defuses'] = parseInt(this.agentsData[i - 1]['Total Defuses'])
-        }
-      });
-    this.$axios(process.env.baseUrl + "api/gameMaps", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.mapsList = response.data;
-      });
-    this.$axios(process.env.baseUrl + "api/events", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.eventList = response.data;
-      });
+    // if (window.location.hash === "") {
+    //   window.location.hash = "#players";
+    // } else if (window.location.hash == "#teams") {
+    //   this.tabs = 1;
+    // } else if (window.location.hash == "#agents") {
+    //   this.tabs = 2;
+    // } else {
+    //   window.location.hash = "#players"
+    // }
+    // this.isLoading = true;
+    // this.$axios(process.env.baseUrl + "api/db/playerstats", { method: "post" })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.playersData = response;
+    //     for (let i = 1; i <= this.playersData.length; i++) {
+    //       this.playersData[i - 1].rankNum = i;
+    //       this.playersData[i - 1]['Rounds Played'] = parseInt(this.playersData[i - 1]['Rounds Played'])
+    //       this.playersData[i - 1]['Maps Played'] = parseInt(this.playersData[i - 1]['Maps Played'])
+    //       this.playersData[i - 1]['Total Kills'] = parseInt(this.playersData[i - 1]['Total Kills'])
+    //       this.playersData[i - 1]['Total Deaths'] = parseInt(this.playersData[i - 1]['Total Deaths'])
+    //       this.playersData[i - 1]['Total FB'] = parseInt(this.playersData[i - 1]['Total FB'])
+    //       this.playersData[i - 1]['Total Assists'] = parseInt(this.playersData[i - 1]['Total Assists'])
+    //       this.playersData[i - 1]['K-D'] = parseInt(this.playersData[i - 1]['K-D'])
+    //       this.playersData[i - 1]['KA-D'] = parseInt(this.playersData[i - 1]['KA-D'])
+    //       this.playersData[i - 1]['Total Plants'] = parseInt(this.playersData[i - 1]['Total Plants'])
+    //       this.playersData[i - 1]['Total Defuses'] = parseInt(this.playersData[i - 1]['Total Defuses'])
+    //     }
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/teamstats", {
+    //   method: "post"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.teamsData = response;
+    //     for (let i = 1; i <= this.teamsData.length; i++) {
+    //       this.teamsData[i - 1].rankNum = i;
+    //       this.teamsData[i - 1]['Rounds Played'] = parseInt(this.teamsData[i - 1]['Rounds Played'])
+    //       this.teamsData[i - 1]['Maps Played'] = parseInt(this.teamsData[i - 1]['Maps Played'])
+    //       this.teamsData[i - 1]['Total Kills'] = parseInt(this.teamsData[i - 1]['Total Kills'])
+    //       this.teamsData[i - 1]['Total Deaths'] = parseInt(this.teamsData[i - 1]['Total Deaths'])
+    //       this.teamsData[i - 1]['Total FB'] = parseInt(this.teamsData[i - 1]['Total FB'])
+    //       this.teamsData[i - 1]['Total Assists'] = parseInt(this.teamsData[i - 1]['Total Assists'])
+    //       this.teamsData[i - 1]['K-D'] = parseInt(this.teamsData[i - 1]['K-D'])
+    //       this.teamsData[i - 1]['KA-D'] = parseInt(this.teamsData[i - 1]['KA-D'])
+    //       this.teamsData[i - 1]['Total Plants'] = parseInt(this.teamsData[i - 1]['Total Plants'])
+    //       this.teamsData[i - 1]['Total Defuses'] = parseInt(this.teamsData[i - 1]['Total Defuses'])
+    //     }
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/agentstats", {
+    //   method: "post"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.agentsData = response;
+    //     for (let i = 1; i <= this.agentsData.length; i++) {
+    //       this.agentsData[i - 1]['Rounds Played'] = parseInt(this.agentsData[i - 1]['Rounds Played'])
+    //       this.agentsData[i - 1]['Maps Played'] = parseInt(this.agentsData[i - 1]['Maps Played'])
+    //       this.agentsData[i - 1]['Total Kills'] = parseInt(this.agentsData[i - 1]['Total Kills'])
+    //       this.agentsData[i - 1]['Total Deaths'] = parseInt(this.agentsData[i - 1]['Total Deaths'])
+    //       this.agentsData[i - 1]['Total FB'] = parseInt(this.agentsData[i - 1]['Total FB'])
+    //       this.agentsData[i - 1]['Total Assists'] = parseInt(this.agentsData[i - 1]['Total Assists'])
+    //       this.agentsData[i - 1]['K-D'] = parseInt(this.agentsData[i - 1]['K-D'])
+    //       this.agentsData[i - 1]['KA-D'] = parseInt(this.agentsData[i - 1]['KA-D'])
+    //       this.agentsData[i - 1]['Total Plants'] = parseInt(this.agentsData[i - 1]['Total Plants'])
+    //       this.agentsData[i - 1]['Total Defuses'] = parseInt(this.agentsData[i - 1]['Total Defuses'])
+    //     }
+    //   });
+    // this.$axios(process.env.baseUrl + "api/gameMaps", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.mapsList = response.data;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/events", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.eventList = response.data;
+    //   });
 
-    this.$axios(process.env.baseUrl + "api/db/agentlist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.agentsList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/playerlist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.playerList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/teamlist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.teamList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/eventregionlist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.eventRegionList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/teamregionlist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.teamRegionList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/substagelist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.substageTypeList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/playercountrylist", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.playerCountryList = response;
-      });
-    this.$axios(process.env.baseUrl + "api/db/playerregion", {
-      method: "get"
-    })
-      .then(function(response) {
-        return response.data;
-      })
-      .then(response => {
-        this.playerRegionList = response;
-      });
-    this.isLoading = false;
+    // this.$axios(process.env.baseUrl + "api/db/agentlist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.agentsList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/playerlist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.playerList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/teamlist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.teamList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/eventregionlist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.eventRegionList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/teamregionlist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.teamRegionList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/substagelist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.substageTypeList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/playercountrylist", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.playerCountryList = response;
+    //   });
+    // this.$axios(process.env.baseUrl + "api/db/playerregion", {
+    //   method: "get"
+    // })
+    //   .then(function(response) {
+    //     return response.data;
+    //   })
+    //   .then(response => {
+    //     this.playerRegionList = response;
+    //   });
+    // this.isLoading = false;
   },
   methods: {
     changeTab(){
