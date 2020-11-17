@@ -1,0 +1,220 @@
+[
+  {
+    "name": "About",
+    "path": "/About",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\About.vue",
+    "chunkName": "pages/About"
+  },
+  {
+    "name": "Admin",
+    "path": "/Admin",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Admin.vue",
+    "chunkName": "pages/Admin"
+  },
+  {
+    "name": "adstest",
+    "path": "/adstest",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\adstest.vue",
+    "chunkName": "pages/adstest"
+  },
+  {
+    "name": "agents",
+    "path": "/agents",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\agents\\\\index.vue",
+    "chunkName": "pages/agents/index"
+  },
+  {
+    "name": "Brackets",
+    "path": "/Brackets",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Brackets.vue",
+    "chunkName": "pages/Brackets"
+  },
+  {
+    "name": "events",
+    "path": "/events",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\events\\\\index.vue",
+    "chunkName": "pages/events/index"
+  },
+  {
+    "name": "forums",
+    "path": "/forums",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\forums\\\\index.vue",
+    "chunkName": "pages/forums/index"
+  },
+  {
+    "name": "Login",
+    "path": "/Login",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Login.vue",
+    "chunkName": "pages/Login"
+  },
+  {
+    "name": "Maps",
+    "path": "/Maps",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Maps.vue",
+    "chunkName": "pages/Maps"
+  },
+  {
+    "name": "matches",
+    "path": "/matches",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\matches\\\\index.vue",
+    "chunkName": "pages/matches/index"
+  },
+  {
+    "name": "mystats",
+    "path": "/mystats",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\mystats\\\\index.vue",
+    "chunkName": "pages/mystats/index",
+    "children": [
+      {
+        "name": "mystats-index-id",
+        "path": ":id?",
+        "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\mystats\\\\index\\\\_id.vue",
+        "chunkName": "pages/mystats/index/_id"
+      }
+    ]
+  },
+  {
+    "name": "news",
+    "path": "/news",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\news\\\\index.vue",
+    "chunkName": "pages/news/index"
+  },
+  {
+    "name": "Reset",
+    "path": "/Reset",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Reset.vue",
+    "chunkName": "pages/Reset"
+  },
+  {
+    "name": "Signup",
+    "path": "/Signup",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Signup.vue",
+    "chunkName": "pages/Signup"
+  },
+  {
+    "name": "skins",
+    "path": "/skins",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\skins\\\\index.vue",
+    "chunkName": "pages/skins/index"
+  },
+  {
+    "name": "stats",
+    "path": "/stats",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\stats\\\\index.vue",
+    "chunkName": "pages/stats/index"
+  },
+  {
+    "name": "Verify",
+    "path": "/Verify",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Verify.vue",
+    "chunkName": "pages/Verify"
+  },
+  {
+    "name": "Writers",
+    "path": "/Writers",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\Writers.vue",
+    "chunkName": "pages/Writers"
+  },
+  {
+    "name": "forums-create",
+    "path": "/forums/create",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\forums\\\\create.vue",
+    "chunkName": "pages/forums/create"
+  },
+  {
+    "name": "skins-media",
+    "path": "/skins/media",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\skins\\\\media.js",
+    "chunkName": "pages/skins/media"
+  },
+  {
+    "name": "stats-compare",
+    "path": "/stats/compare",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\stats\\\\compare\\\\index.vue",
+    "chunkName": "pages/stats/compare/index"
+  },
+  {
+    "name": "teams-compare",
+    "path": "/teams/compare",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\teams\\\\compare.vue",
+    "chunkName": "pages/teams/compare"
+  },
+  {
+    "name": "stats-events-id",
+    "path": "/stats/events/:id?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\stats\\\\events\\\\_id.vue",
+    "chunkName": "pages/stats/events/_id"
+  },
+  {
+    "name": "skins-weapons-id-slug",
+    "path": "/skins/weapons/:id?/:slug?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\skins\\\\weapons\\\\_id\\\\_slug.vue",
+    "chunkName": "pages/skins/weapons/_id/_slug"
+  },
+  {
+    "name": "agents-name",
+    "path": "/agents/:name",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\agents\\\\_name.vue",
+    "chunkName": "pages/agents/_name"
+  },
+  {
+    "name": "skins-id",
+    "path": "/skins/:id",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\skins\\\\_id.vue",
+    "chunkName": "pages/skins/_id"
+  },
+  {
+    "name": "teams-id",
+    "path": "/teams/:id?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\teams\\\\_id.vue",
+    "chunkName": "pages/teams/_id"
+  },
+  {
+    "name": "user-id",
+    "path": "/user/:id?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\user\\\\_id.vue",
+    "chunkName": "pages/user/_id"
+  },
+  {
+    "name": "events-id-bracket",
+    "path": "/events/:id/bracket",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\events\\\\_id\\\\bracket.vue",
+    "chunkName": "pages/events/_id/bracket"
+  },
+  {
+    "name": "events-id-slug",
+    "path": "/events/:id/:slug?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\events\\\\_id\\\\_slug.vue",
+    "chunkName": "pages/events/_id/_slug"
+  },
+  {
+    "name": "forums-id-slug",
+    "path": "/forums/:id/:slug?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\forums\\\\_id\\\\_slug.vue",
+    "chunkName": "pages/forums/_id/_slug"
+  },
+  {
+    "name": "matches-id-slug",
+    "path": "/matches/:id/:slug?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\matches\\\\_id\\\\_slug.vue",
+    "chunkName": "pages/matches/_id/_slug"
+  },
+  {
+    "name": "news-id-slug",
+    "path": "/news/:id/:slug?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\news\\\\_id\\\\_slug.vue",
+    "chunkName": "pages/news/_id/_slug"
+  },
+  {
+    "name": "players-id-slug",
+    "path": "/players/:id?/:slug?",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\players\\\\_id\\\\_slug.vue",
+    "chunkName": "pages/players/_id/_slug"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Abdul Elrahwa\\\\Desktop\\\\macvarsity\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
+  }
+]
