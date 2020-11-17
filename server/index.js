@@ -64,7 +64,7 @@ async function start() {
   const host = app.get('host')
   const port = app.get('port')
 
-  app.listen(port)
+  app.listen(process.env.PORT ||port)
 
   consola.ready({
     message: `Feathers application started on ${host}:${port}`,
