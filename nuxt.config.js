@@ -28,7 +28,7 @@ module.exports = {
     ],
   },
   env: {
-    baseUrl: development ? 'http://localhost:3030/' : 'https://valorantify.com/'
+    baseUrl: development ? 'http://localhost:3030/' : process.env.BASE_URL
   },
   axios: {
     baseURL: '/'

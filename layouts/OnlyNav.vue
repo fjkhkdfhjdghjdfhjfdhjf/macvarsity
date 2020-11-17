@@ -212,36 +212,6 @@ export default {
       }
     }
   },
-  head() {
-    return {
-      title: "Mac Varsity Coverage and More!",
-      meta: [
-        {
-          hid: "twittercard",
-          name: "twitter:card",
-          content: "summary_large_image"
-        },
-        {
-          hid: "twittertitle",
-          name: "twitter:title",
-          content: "Valorantify| Professional Valorant Coverage Stats and More!"
-        },
-        {
-          hid: "twitterd",
-          name: "twitter:description",
-          content:
-            "A website that offers the most up to date news, stats, events and matches for anything Valorant related."
-        },
-        // image must be an absolute path
-        {
-          hid: "twitterimg",
-          name: "twitter:image",
-          content:
-            "https://valorantify.com/api/uploads/news/1590013953515-logo.jpg"
-        }
-      ]
-    };
-  },
   data() {
     return {
       items: [
