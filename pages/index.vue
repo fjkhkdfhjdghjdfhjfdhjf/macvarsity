@@ -16,7 +16,7 @@
           <!-- <div class="vm-placement" data-id="5ed90370b519801b8a4d528b"></div> -->
           <div v-if="!$device.isMobile" style="text-align:left" class="subtitle">Latest Articles</div>
           <div v-else style="text-align:left; margin-top:15px" class="subtitle">Latest Articles</div>
-          <div
+          <!-- <div
             class="card"
             v-for="singleNews in news.slice(0,1)"
             :key="singleNews.id"
@@ -35,8 +35,8 @@
                 </div>
               </div>
             </nuxt-link>
-          </div>
-          <div
+          </div> -->
+          <!-- <div
             v-for="(article,index) in news.slice(1,news.length)"
             :key="article._id"
             style="margin-top:10px"
@@ -80,7 +80,7 @@
                 </div>
               </div>
             </nuxt-link>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
